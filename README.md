@@ -102,21 +102,20 @@ GitHub Pages publicerar din statiska webbplats (HTML/CSS) direkt från ditt repo
 
 **Förutsättningar:** Du behöver ett **eget repo** (skapa ett via den gröna knappen **"Use this template"**, se steg 1 under Codespaces) och repot måste vara **publikt** (privata repo kräver GitHub Pro, vilket ingår i Student Developer Pack).
 
-1. Se till att din kod (`index.html` m.fl.) är **committad och pushad** till `main`.
-2. Gå till ditt repo på **github.com** → klicka på fliken **Settings** högst upp.
-3. I vänstermenyn, under "Code and automation", välj **Pages**.
-4. Under **Build and deployment** → **Source**, välj **Deploy from a branch**.
-5. Under **Branch**, välj **`main`** och mappen **`/ (root)`** → klicka **Save**.
-6. Vänta ca **1 minut** och ladda om sidan. En ruta högst upp visar adressen till din publicerade webbplats:
+1. Se till att repot är **publikt** och att arbetsflöden har tillåtelse att köras: gå till **Settings → Actions → General** och kontrollera att Actions är aktiverat.
+2. Committa och pusha din kod till grenen **`main`**.
+3. Arbetsflödet `.github/workflows/pages.yml` aktiverar GitHub Pages och publicerar `index.html` samt bildmapparna automatiskt.
+4. Öppna repots flik **Actions** och kontrollera att körningen **Deploy static site to GitHub Pages** har slutförts.
+5. När publiceringen är klar finns adressen på körningens **github-pages**-miljö, och vanligtvis på:
 
    **`https://<användarnamn>.github.io/<repo-namn>/`**
-7. Klicka på **Visit site** för att öppna din webbplats.
+6. Om Pages inte kan aktiveras av arbetsflödet, öppna **Settings → Pages**, välj **GitHub Actions** som källa och kör arbetsflödet igen.
 
 **Bra att veta:**
 
 | Fråga | Svar |
 |-------|------|
-| **Uppdatera sidan** | Varje gång du pushar nya ändringar till `main` byggs webbplatsen om automatiskt inom någon minut. |
+| **Uppdatera sidan** | Varje gång du pushar nya ändringar till `main` byggs webbplatsen om automatiskt. |
 | **Får en 404?** | Kontrollera att filen heter exakt **`index.html`** och ligger i **roten** av repot (inte i en undermapp). |
 | **Bilder syns inte?** | Använd relativa sökvägar, t.ex. `assets/images/min-bild.jpg` — inte sökvägar som börjar med `/`. |
 
